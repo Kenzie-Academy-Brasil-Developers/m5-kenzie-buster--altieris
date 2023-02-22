@@ -25,7 +25,7 @@ class MovieOrderSerializer(serializers.Serializer):
     
     title = serializers.CharField(source='movie.title', read_only=True)
      
-    price = serializers.DecimalField(max_digits=5, decimal_places=2)
+    price = serializers.DecimalField(max_digits=8, decimal_places=2)
     buyed_at = serializers.DateTimeField(read_only=True)
     
     buyed_by = serializers.CharField(source='user_order.email', read_only=True)

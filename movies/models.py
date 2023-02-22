@@ -19,7 +19,7 @@ class Movie(models.Model):
     
 class MovieOrder(models.Model):
     
-    price = models.FloatField()
+    price = models.FloatField(max_length=8)
     buyed_at = models.DateTimeField(auto_now_add=True)
     
     movie = models.ForeignKey("movies.Movie", on_delete=models.CASCADE, related_name='movie_order')

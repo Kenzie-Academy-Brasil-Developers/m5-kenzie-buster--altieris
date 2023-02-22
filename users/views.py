@@ -20,15 +20,7 @@ class UserView(APIView):
         
         serializer.is_valid(raise_exception=True)
         
-        try:
-            if request.data['is_employee'] == True:
-                user = User.objects.create_superuser(**serializer.validated_data)
-            else:
-                user = User.objects.create_user(**serializer.validated_data)
-        except KeyError:
-            user = User.objects.create_user(**serializer.validated_data)
-            
-        serializer = UserSerializer(user)
+        serializer.save()
         
         return Response(serializer.data, status.HTTP_201_CREATED)
     
